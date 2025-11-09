@@ -6,43 +6,43 @@ title: File Explorer Architecture
 
 파일 시스템 추상화와 상태 관리 아키텍처에 대한 문서입니다.
 
-## 📚 [File Explorer Architecture - Home](🗂️%20File%20Explorer%20Architecture%20-%20Home.md)
+## 📚 [File Explorer Architecture - Home](🗂️-File-Explorer-Architecture---Home)
 
 모듈화되고 확장 가능한 파일 탐색기 아키텍처의 전체 구조를 설명합니다.
 
 ## 📖 핵심 컴포넌트
 
-### 1. [FsProvider - The Universal Adapter](1.%20FsProvider%20-%20The%20Universal%20Adapter.md)
+### 1. [FsProvider - The Universal Adapter](1.-FsProvider---The-Universal-Adapter)
 다양한 파일 시스템 백엔드를 통합하는 유니버설 어댑터 패턴
 - 파일 시스템 추상화
 - 플러그인 아키텍처
 - 비동기 작업 처리
 
-### 2. [FsNode & ID Strategy - The Identity Crisis](2.%20FsNode%20&%20ID%20Strategy%20-%20The%20Identity%20Crisis.md)
+### 2. [FsNode & ID Strategy - The Identity Crisis](2.-FsNode-&-ID-Strategy---The-Identity-Crisis)
 파일 시스템 노드의 고유 식별자 관리 전략
 - ID 생성 및 관리
 - 노드 메타데이터 구조
 - 계층 구조 표현
 
-### 3. [State Management - The Single Source of Truth](3.%20State%20Management%20-%20The%20Single%20Source%20of%20Truth.md)
+### 3. [State Management - The Single Source of Truth](3.-State-Management---The-Single-Source-of-Truth)
 중앙 집중식 상태 관리 시스템
 - Redux 패턴 적용
 - 불변성 보장
 - 상태 동기화
 
-### 4. [Services & Selectors - Helpers and Lenses](4.%20Services%20&%20Selectors%20-%20Helpers%20and%20Lenses.md)
+### 4. [Services & Selectors - Helpers and Lenses](4.-Services-&-Selectors---Helpers-and-Lenses)
 비즈니스 로직과 데이터 접근 레이어
 - 서비스 레이어 패턴
 - 선택자(Selector) 최적화
 - 메모이제이션 전략
 
-### 5. [Indexer - The Heavy Lifter (in the Basement)](5.%20Indexer%20-%20The%20Heavy%20Lifter%20(in%20the%20Basement).md)
+### 5. [Indexer - The Heavy Lifter (in the Basement)](5.-Indexer---The-Heavy-Lifter-(in-the-Basement).md)
 백그라운드 인덱싱과 검색 시스템
 - 비동기 인덱싱
 - 검색 최적화
 - 캐싱 전략
 
-### 6. [Concurrency & Errors - The Safety Net](6.%20Concurrency%20&%20Errors%20-%20The%20Safety%20Net.md)
+### 6. [Concurrency & Errors - The Safety Net](6.-Concurrency-&-Errors---The-Safety-Net)
 동시성 제어와 에러 처리 메커니즘
 - 작업 큐 관리
 - 에러 복구 전략

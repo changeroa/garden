@@ -1,7 +1,7 @@
 # use
 
 ## 🔗 연결
-- **상위:** [[UberShader 클래스]]
+- **상위:** [[ubershader-class]]
 - **관련:** [[compile]], [[setUniforms]]
 
 ## 📖 설명

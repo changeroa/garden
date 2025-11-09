@@ -583,6 +583,6 @@ npm run benchmark:all > benchmark-results.txt
 ---
 
 **관련 문서**:
-- [02-phase1-performance.md](./02-phase1-performance.md) - Phase 1 구현
-- [09-troubleshooting.md](./09-troubleshooting.md) - 트러블슈팅
-- [08-api-reference.md](./08-api-reference.md) - API 문서
+- [02-phase1-performance.md](./02-phase1-performance) - Phase 1 구현
+- [09-troubleshooting.md](./09-troubleshooting) - 트러블슈팅
+- [08-api-reference.md](./08-api-reference) - API 문서

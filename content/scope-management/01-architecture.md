@@ -853,4 +853,4 @@ class DebouncedScopeDetector extends DOMScopeDetector {
 
 ---
 
-**다음 문서**: [02-phase1-performance.md](./02-phase1-performance.md) - Phase 1 성능 최적화 상세 가이드
+**다음 문서**: [02-phase1-performance.md](./02-phase1-performance) - Phase 1 성능 최적화 상세 가이드

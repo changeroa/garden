@@ -1,9 +1,9 @@
 # Tailwind CLI
 
 ## 🔗 연결
-- **상위:** [[../Tailwind CSS 마스터 가이드]]
-- **이전:** [[개발 환경 설정]]
-- **다음:** [[../03-Practical-Implementation/반응형 디자인]]
+- **상위:** [[/tailwind-css-master-guide]]
+- **이전:** [[development-environment-setup]]
+- **다음:** [[/03-Practical-Implementation/responsive-design]]
 - **관련:** [[npm scripts]], [[빌드 프로세스]]
 
 ## 📝 핵심 정리
@@ -58,4 +58,4 @@ npx tailwindcss -i ./src/input.css -o ./dist/output.css --minify
 - **빌드 도구 통합**: Vite, Webpack, Parcel과 같은 상위 레벨의 빌드 도구를 사용하면, 해당 도구의 설정 파일 안에서 Tailwind CLI 대신 PostCSS 플러그인으로 처리하는 경우가 더 많습니다. CLI는 간단한 프로젝트나 특정 목적의 빌드에 유용합니다.
 
 ## ⚡ 다음 학습
-- 이제 개발 환경이 준비되었으니, [[../03-Practical-Implementation/반응형 디자인]]을 통해 실제 UI를 만들어봅니다.
+- 이제 개발 환경이 준비되었으니, [[/03-Practical-Implementation/responsive-design]]을 통해 실제 UI를 만들어봅니다.

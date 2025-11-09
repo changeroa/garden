@@ -849,6 +849,6 @@ export class BatchedScopeManager extends ScopeManager {
 ---
 
 **관련 문서**:
-- [04-phase3-react-hooks.md](./04-phase3-react-hooks.md) - 이전 단계
-- [08-api-reference.md](./08-api-reference.md) - API 문서
-- [10-performance-benchmarks.md](./10-performance-benchmarks.md) - 성능 벤치마크
+- [04-phase3-react-hooks.md](./04-phase3-react-hooks) - 이전 단계
+- [08-api-reference.md](./08-api-reference) - API 문서
+- [10-performance-benchmarks.md](./10-performance-benchmarks) - 성능 벤치마크

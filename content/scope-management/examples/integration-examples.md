@@ -736,6 +736,6 @@ try {
 ---
 
 **관련 문서**:
-- [basic-usage.md](./basic-usage.md) - 기본 사용법
-- [advanced-patterns.md](./advanced-patterns.md) - 고급 패턴
-- [07-migration-guide.md](../07-migration-guide.md) - 마이그레이션 가이드
+- [basic-usage.md](./basic-usage) - 기본 사용법
+- [advanced-patterns.md](./advanced-patterns) - 고급 패턴
+- [07-migration-guide.md](../07-migration-guide) - 마이그레이션 가이드

@@ -148,4 +148,4 @@ function ScopeDebug() {
 
 ---
 
-더 많은 예제는 [advanced-patterns.md](./advanced-patterns.md)를 참조하세요.
+더 많은 예제는 [advanced-patterns.md](./advanced-patterns)를 참조하세요.

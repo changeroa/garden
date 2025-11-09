@@ -67,9 +67,9 @@ LLM 컨텍스트 최적화와 메모리 시스템 설계 문서입니다.
 ## 🔍 빠른 탐색
 
 ### 최근 업데이트
-- [Scope Management System 구축](scope-management/00-overview.md)
-- [WebGL Rendering Lifecycle Master Map](realtime-rendering/WebGL%20Rendering%20Lifecycle%20Master%20Map/🎓%20WebGL%20Rendering%20Lifecycle%20Master%20Map.md)
-- [File Explorer Architecture](fileExplorer/🗂️%20File%20Explorer%20Architecture%20-%20Home.md)
+- [Scope Management System 구축](scope-management/00-overview)
+- [WebGL Rendering Lifecycle Master Map](realtime-rendering/WebGL-Rendering-Lifecycle-Master-Map/🎓-WebGL-Rendering-Lifecycle-Master-Map)
+- [File Explorer Architecture](fileExplorer/🗂️-File-Explorer-Architecture---Home)
 
 ### 학습 경로
 1. **웹 그래픽스 입문**: [좌표계 기초](coordinate_system/) → [WebGL 기초](realtime-rendering/) → [Canvas Engine](WebGLCanvasEngine/)

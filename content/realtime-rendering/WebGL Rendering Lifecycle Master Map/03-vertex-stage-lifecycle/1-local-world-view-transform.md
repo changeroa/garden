@@ -1,0 +1,34 @@
+
+# 1. Local → World → View 변환
+
+> **핵심: 공간 변환과 정밀도 오차가 화면의 모든 위치 문제를 만든다.**
+
+Vertex Shader의 주요 임무 중 하나는 모델의 정점(Local Space)을 카메라 시점(View Space)을 거쳐 최종적으로 2D 화면에 표시될 좌표(Clip Space)로 변환하는 것입니다. 이 과정은 행렬 곱셈을 통해 이루어집니다.
+
+`gl_Position = Projection * View * Model * local_position;`
+
+---
+
+### 1. 모델 행렬 (Model Matrix)
+
+-   **역할**: Local Space의 모델을 World Space로 옮겨 놓습니다. 즉, 모델의 크기(Scale), 회전(Rotation), 위치(Translation)를 지정합니다.
+-   **예시**: 캐릭터를 월드의 `(10, 0, 5)` 위치에 90도 회전하여 배치.
+
+### 2. 뷰 행렬 (View Matrix)
+
+-   **역할**: World Space의 모든 객체들을 카메라의 시점으로 변환합니다. 월드를 통째로 움직여서 카메라를 원점(0,0,0)에 갖다 놓는 것과 같습니다.
+-   **예시**: `(10, 5, 10)` 위치에 있는 카메라가 원점을 바라보도록 월드 전체를 이동 및 회전.
+
+### 3. 투영 행렬 (Projection Matrix)
+
+-   **역할**: View Space에 있는 3D 공간을 2D 화면에 투영하기 위한 절두체(Frustum)를 정의하고, 이 절두체 안의 좌표를 [[03-vertex-stage-lifecycle/2. Clip Space NDC 변환|Clip Space]]로 변환합니다.
+-   **종류**:
+    -   **원근 투영 (Perspective Projection)**: 거리에 따라 물체의 크기가 작아 보이는, 현실 세계와 같은 투영 방식입니다. `glMatrix.mat4.perspective`
+    -   **직교 투영 (Orthographic Projection)**: 거리에 상관없이 물체의 크기가 동일하게 유지되는 투영 방식입니다. 2D 게임이나 CAD 프로그램에서 주로 사용됩니다. `glMatrix.mat4.ortho`
+
+### 부동소수점 오차와 픽셀 흔들림 (Jitter)
+
+-   **원인**: 행렬의 각 요소와 정점 좌표는 부동소수점(float) 숫자로 표현됩니다. 이 숫자들을 GPU에서 반복적으로 곱하고 더하는 과정에서 미세한 정밀도 오차가 누적됩니다.
+    -   `1/3`을 `0.33333...`으로 표현할 때 발생하는 오차와 유사합니다.
+-   **결과**: 이 누적된 오차로 인해 최종 계산된 정점의 화면 좌표가 매 프레임마다 미세하게 달라질 수 있습니다. 이 현상이 바로 [[09-rendering-lifecycle-debugging/Rendering Lifecycle 디버깅 체계|픽셀 흔들림(Jitter) 또는 Z-fighting(깊이 값 경쟁)]]의 원인이 됩니다.
+-   특히 카메라가 월드 원점에서 매우 멀리 떨어져 있을 때, 큰 숫자와 작은 숫자를 함께 연산하게 되면서 정밀도 손실이 커져 문제가 두드러집니다.

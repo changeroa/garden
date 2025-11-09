@@ -541,5 +541,5 @@ npm run test:perf
 ---
 
 **관련 문서**:
-- [02-phase1-performance.md](./02-phase1-performance.md) - 구현 가이드
-- [08-api-reference.md](./08-api-reference.md) - API 문서
+- [02-phase1-performance.md](./02-phase1-performance) - 구현 가이드
+- [08-api-reference.md](./08-api-reference) - API 문서

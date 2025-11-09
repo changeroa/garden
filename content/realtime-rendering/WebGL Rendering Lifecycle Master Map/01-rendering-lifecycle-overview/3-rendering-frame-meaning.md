@@ -1,0 +1,31 @@
+
+# 3. 렌더링 ‘프레임’의 의미
+
+> **한 프레임 = GPU 상태 초기화 + 도형 처리 + 결과 버퍼 교체**
+
+하나의 프레임(Frame)을 렌더링한다는 것은 단순히 그림 하나를 그리는 것을 넘어, 다음과 같은 명확한 단계들의 순차적 실행을 의미합니다.
+
+1.  **상태 초기화 (State Reset)**
+    - `gl.clear()`를 호출하여 [[08-framebuffer-to-display-lifecycle/1. Framebuffer 구조|Color Buffer]]와 [[04-rasterization-lifecycle/2. Depth & Face Culling|Depth Buffer]]를 지정된 색상과 깊이 값으로 초기화합니다.
+    - 이는 이전 프레임의 잔상을 지우고 새로운 그림을 그릴 준비를 하는 과정입니다.
+
+2.  **도형 처리 (Geometry Processing)**
+    - `gl.drawCall()`을 통해 전달된 정점 데이터가 [[01-rendering-lifecycle-overview/1. Rendering Pipeline Overview|렌더링 파이프라인]]을 따라 처리됩니다.
+    - 이 과정에서 [[03-vertex-stage-lifecycle/4. Vertex Shader의 생명주기|Vertex Shader]], [[04-rasterization-lifecycle/1. Triangle Coverage Calculation|Rasterization]], [[05-fragment-stage-lifecycle/1. Fragment Shader 호출 시점|Fragment Shader]] 등이 순차적으로 실행됩니다.
+
+3.  **버퍼 교체 (Buffer Swap)**
+    - GPU는 보통 두 개의 버퍼(Front Buffer와 Back Buffer)를 사용합니다. (Double Buffering)
+    - 렌더링 작업은 화면에 보이지 않는 **Back Buffer**에서 일어납니다.
+    - 프레임의 모든 렌더링이 완료되면, 시스템은 Back Buffer와 현재 화면에 보이는 **Front Buffer**를 교체합니다. (`requestAnimationFrame` 콜백이 끝나는 시점)
+    - 이 교체 과정이 바로 우리가 화면에서 움직임을 인식하게 되는 원리입니다.
+
+---
+
+## VSync와 프레임 페이싱 (Frame Pacing)
+
+-   **VSync (수직 동기화)**: 모니터의 주사율(예: 60Hz)에 맞춰 버퍼 교체 시점을 동기화하는 기술입니다. 이는 화면이 찢어지는 현상([[08-framebuffer-to-display-lifecycle/2. VSync Frame pacing|Tearing]])을 방지합니다.
+    - 60Hz 모니터에서는 1/60초(약 16.67ms)마다 버퍼 교체가 일어납니다.
+
+-   **프레임 페이싱 (Frame Pacing)**: 렌더링 시간을 균일하게 유지하여 부드러운 사용자 경험을 제공하는 것입니다.
+    - **지연 (Latency)**: 렌더링이 16.67ms보다 오래 걸리면, VSync 타이밍을 놓쳐 다음 주사 시점까지 화면 갱신이 지연됩니다. 프레임 드랍(Frame Drop)이 발생하며 FPS는 30으로 떨어집니다.
+    - **스터터 (Stutter)**: 렌더링 시간이 불규칙할 때(예: 10ms → 25ms → 12ms), 화면이 부드럽지 않고 뚝뚝 끊기는 느낌을 주게 됩니다. 이는 [[08-framebuffer-to-display-lifecycle/2. VSync Frame pacing|미세 떨림(Jitter)]]의 주요 원인입니다.

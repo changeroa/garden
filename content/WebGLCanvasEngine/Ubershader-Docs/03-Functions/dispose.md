@@ -1,7 +1,7 @@
 # dispose
 
 ## 🔗 연결
-- **상위:** [[UberShader 클래스]]
+- **상위:** [[ubershader-class]]
 - **관련:** [[compile]], [[isReady]]
 
 ## 📖 설명

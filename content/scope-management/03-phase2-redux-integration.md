@@ -759,6 +759,6 @@ Phase 2 완료 후 **Phase 3: React Hooks**로 진행:
 ---
 
 **관련 문서**:
-- [02-phase1-performance.md](./02-phase1-performance.md) - 이전 단계
-- [04-phase3-react-hooks.md](./04-phase3-react-hooks.md) - 다음 단계
-- [08-api-reference.md](./08-api-reference.md) - API 문서
+- [02-phase1-performance.md](./02-phase1-performance) - 이전 단계
+- [04-phase3-react-hooks.md](./04-phase3-react-hooks) - 다음 단계
+- [08-api-reference.md](./08-api-reference) - API 문서

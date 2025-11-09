@@ -430,5 +430,5 @@ Week 8:  최종 검증 + 문서화
 ---
 
 **관련 문서**:
-- [00-overview.md](./00-overview.md) - 프로젝트 개요
-- [06-testing-strategy.md](./06-testing-strategy.md) - 테스트 전략
+- [00-overview.md](./00-overview) - 프로젝트 개요
+- [06-testing-strategy.md](./06-testing-strategy) - 테스트 전략

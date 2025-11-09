@@ -6,33 +6,33 @@ title: Tailwind CSS Guide
 
 Tailwind CSS의 철학부터 실전 활용까지 다루는 포괄적인 가이드입니다.
 
-## 📚 [Tailwind CSS 마스터 가이드](tailwind-css-guide/Tailwind%20CSS%20마스터%20가이드.md)
+## 📚 [Tailwind CSS 마스터 가이드](tailwind-css-guide/Tailwind-CSS-마스터-가이드)
 
 Utility-First CSS 프레임워크인 Tailwind CSS의 완벽한 활용법을 담은 문서입니다.
 
 ## 📖 주요 섹션
 
 ### 01. Core Concepts - 핵심 개념
-- [Utility-First 철학](tailwind-css-guide/01-Core-Concepts/Utility-First%20철학.md) - Tailwind의 핵심 디자인 철학
-- [JIT 컴파일러](tailwind-css-guide/01-Core-Concepts/JIT%20컴파일러.md) - Just-In-Time 컴파일 이해
-- [tailwind.config.js 설정](tailwind-css-guide/01-Core-Concepts/tailwind.config.js%20설정.md) - 설정 파일 완벽 가이드
+- [Utility-First 철학](tailwind-css-guide/01-Core-Concepts/Utility-First-철학) - Tailwind의 핵심 디자인 철학
+- [JIT 컴파일러](tailwind-css-guide/01-Core-Concepts/JIT-컴파일러) - Just-In-Time 컴파일 이해
+- [tailwind.config.js 설정](tailwind-css-guide/01-Core-Concepts/tailwind.config.js-설정) - 설정 파일 완벽 가이드
 
 ### 02. Essential Tools - 필수 도구
-- [개발 환경 설정](tailwind-css-guide/02-Essential-Tools/개발%20환경%20설정.md) - VSCode, PostCSS 설정
-- [Tailwind CLI](tailwind-css-guide/02-Essential-Tools/Tailwind%20CLI.md) - CLI 도구 활용법
+- [개발 환경 설정](tailwind-css-guide/02-Essential-Tools/개발-환경-설정) - VSCode, PostCSS 설정
+- [Tailwind CLI](tailwind-css-guide/02-Essential-Tools/Tailwind-CLI) - CLI 도구 활용법
 
 ### 03. Practical Implementation - 실전 구현
-- [반응형 디자인](tailwind-css-guide/03-Practical-Implementation/반응형%20디자인.md) - 모바일 우선 접근법
-- [상태 관리 (Hover, Focus 등)](tailwind-css-guide/03-Practical-Implementation/상태%20관리%20(Hover,%20Focus%20등).md) - 인터랙티브 스타일링
-- [컴포넌트 추출](tailwind-css-guide/03-Practical-Implementation/컴포넌트%20추출.md) - @apply와 컴포넌트화
+- [반응형 디자인](tailwind-css-guide/03-Practical-Implementation/반응형-디자인) - 모바일 우선 접근법
+- [상태 관리 (Hover, Focus 등)](tailwind-css-guide/03-Practical-Implementation/상태-관리-(Hover,-Focus-등).md) - 인터랙티브 스타일링
+- [컴포넌트 추출](tailwind-css-guide/03-Practical-Implementation/컴포넌트-추출) - @apply와 컴포넌트화
 
 ### 04. Real-World Usage - 실무 활용
-- [커스텀 테마 확장](tailwind-css-guide/04-Real-World-Usage/커스텀%20테마%20확장.md) - 브랜드 디자인 시스템 구축
-- [프로덕션 최적화](tailwind-css-guide/04-Real-World-Usage/프로덕션%20최적화.md) - PurgeCSS와 번들 최적화
-- [플러그인 사용](tailwind-css-guide/04-Real-World-Usage/플러그인%20사용.md) - 커스텀 유틸리티 확장
+- [커스텀 테마 확장](tailwind-css-guide/04-Real-World-Usage/커스텀-테마-확장) - 브랜드 디자인 시스템 구축
+- [프로덕션 최적화](tailwind-css-guide/04-Real-World-Usage/프로덕션-최적화) - PurgeCSS와 번들 최적화
+- [플러그인 사용](tailwind-css-guide/04-Real-World-Usage/플러그인-사용) - 커스텀 유틸리티 확장
 
 ## 💡 핵심 포인트
-- [GEMINI 분석](GEMINI.md) - AI 관점에서 본 Tailwind CSS 활용 전략
+- [GEMINI 분석](GEMINI) - AI 관점에서 본 Tailwind CSS 활용 전략
 
 ## 🚀 주요 특징
 

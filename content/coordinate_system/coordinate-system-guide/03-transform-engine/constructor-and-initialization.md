@@ -1,0 +1,72 @@
+# 생성자 및 초기화
+
+## 🔗 연결
+-   **상위:** [.[03-transform-engine/coordinate-transform-class]]
+-   **다음:** [.[03-transform-engine/matrix-update-logic]]
+-   **관련:** [.[05-advanced-topics/dom-event-listeners]], [.[05-advanced-topics/device-pixel-ratio-handling]]
+
+## 📝 핵심 정리
+`CoordinateTransform` 클래스의 인스턴스를 생성하고, 필요한 초기 설정을 수행합니다.
+
+## 💻 코드 예제 (완전 주석)
+
+```typescript
+/**
+ * ==========================================
+ * [기능명]: 클래스 생성자 및 이벤트 리스너 설정
+ * ==========================================
+ * 
+ * 📖 목적: 클래스 인스턴스 생성 시 필요한 초기 상태를 설정하고, 외부 환경 변화를 감지할 이벤트 리스너를 등록합니다.
+ * 🏗️ 구조: 생성자는 canvas와 초기 viewport 값을 받고, 내부적으로 devicePixelRatio를 확인하며, 이벤트 리스너 설정 메서드를 호출합니다.
+ * 🎯 학습포인트: 클래스의 생명주기(lifecycle)의 시작점인 생성자의 역할과, 외부 환경과 상호작용하는 방법을 배웁니다.
+ */
+
+// 생성자: new CoordinateTransform(...) 호출 시 실행됩니다.
+constructor(canvas: HTMLCanvasElement, viewport: Viewport, debug = false) {
+  // 입력받은 canvas와 viewport를 클래스 속성에 저장합니다.
+  // viewport는 {...viewport}를 통해 복사하여, 원본 객체에 영향을 주지 않도록 합니다.
+  this.canvas = canvas;
+  this.viewport = { ...viewport };
+  
+  // 현재 브라우저/디스플레이의 devicePixelRatio 값을 가져옵니다.
+  this.devicePixelRatio = window.devicePixelRatio || 1;
+  this.debug = debug;
+  
+  // 행렬을 저장할 Float32Array를 초기화합니다.
+  this.viewMatrix = new Float32Array(9);
+  this.inverseViewMatrix = new Float32Array(9);
+  
+  // 첫 행렬을 계산합니다.
+  this.updateMatrices();
+  // 필요한 DOM 이벤트를 수신 대기 시작합니다.
+  this.setupEventListeners();
+}
+
+// DOM 이벤트 리스너를 설정하는 비공개 메서드
+private setupEventListeners(): void {
+  // 캔버스 크기 변경을 감지하는 ResizeObserver를 설정합니다.
+  const resizeObserver = new ResizeObserver(() => {
+    this.invalidateCanvasBounds();
+  });
+  resizeObserver.observe(this.canvas);
+  
+  // 브라우저 창 크기 변경(주로 dpr 변경 감지용) 이벤트를 설정합니다.
+  window.addEventListener('resize', () => {
+    const newDpr = window.devicePixelRatio || 1;
+    if (newDpr !== this.devicePixelRatio) {
+      // dpr 값이 변경되었으면, dpr을 업데이트하고 행렬을 새로 계산하도록 플래그를 설정합니다.
+      this.devicePixelRatio = newDpr;
+      this.matrixNeedsUpdate = true;
+    }
+  });
+}
+```
+
+## 🔍 상세 분석
+
+### 로직 포인트
+-   **불변성(Immutability)**: `viewport`를 `{ ...viewport }`와 같이 스프레드 문법으로 복사하는 것은 좋은 습관입니다. 이를 통해 외부에서 전달한 `viewport` 객체가 변경되더라도, 클래스 내부의 상태는 영향을 받지 않습니다.
+-   **초기화 순서**: 상태(dpr, viewport)를 먼저 설정하고, 그 상태를 기반으로 행렬을 계산(`updateMatrices`)한 뒤, 향후의 변경을 감지할 이벤트 리스너(`setupEventListeners`)를 등록하는 논리적인 순서로 진행됩니다.
+
+### 실무 포인트
+-   생성자에서는 시간이 오래 걸리는 비동기 작업을 피하는 것이 좋습니다. 클래스의 초기화는 최대한 빠르고 동기적으로 이루어져야 합니다.

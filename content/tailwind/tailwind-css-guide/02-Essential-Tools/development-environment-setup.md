@@ -1,0 +1,74 @@
+# 개발 환경 설정
+
+## 🔗 연결
+- **상위:** [[/tailwind-css-master-guide]]
+- **이전:** [[/01-Core-Concepts/tailwind-config-js-setup]]
+- **다음:** [[Tailwind CLI]]
+- **관련:** [[PostCSS]], [[npm]], [[Vite]], [[Next.js]]
+
+## 📝 핵심 정리
+프로젝트에 Tailwind CSS를 설치하고, 빌드 도구(PostCSS)와 연동하여 개발 환경을 구축하는 과정을 다룹니다. 프레임워크에 따라 설정 방법이 약간씩 다를 수 있습니다.
+
+## 💻 코드 예제 (PostCSS 기반의 일반적인 설정)
+
+/**
+ * ==========================================
+ * [기능명]: Tailwind CSS 및 관련 도구 설치
+ * ==========================================
+ *
+ * 📖 목적: `npm`을 사용하여 Tailwind CSS와 의존성 패키지를 설치하고 기본 설정 파일을 생성합니다.
+ * 🏗️ 구조: `tailwindcss`, `postcss`, `autoprefixer`를 개발 의존성(`-D`)으로 설치합니다.
+ * 🔄 흐름: 1. `npm`으로 패키지 설치 → 2. `tailwind.config.js`와 `postcss.config.js` 파일 생성 → 3. 기본 CSS 파일 작성.
+ * 🎯 학습포인트: Tailwind는 PostCSS 플러그인으로 동작하므로, PostCSS와 Autoprefixer가 필수적으로 필요하다는 점을 이해합니다.
+ */
+
+**1. 패키지 설치**
+```bash
+npm install -D tailwindcss postcss autoprefixer
+npx tailwindcss init -p
+```
+* `-p` 플래그는 `postcss.config.js` 파일을 함께 생성합니다.
+
+**2. `tailwind.config.js` 설정**
+```javascript
+module.exports = {
+  content: ["./src/**/*.{html,js}"], // 클래스를 스캔할 파일 지정
+  theme: {
+    extend: {},
+  },
+  plugins: [],
+}
+```
+
+**3. `postcss.config.js` 확인**
+```javascript
+module.exports = {
+  plugins: {
+    tailwindcss: {},
+    autoprefixer: {},
+  },
+}
+```
+
+**4. 메인 CSS 파일 작성 (`./src/input.css`)**
+```css
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+```
+* `@tailwind` 지시어는 빌드 과정에서 실제 유틸리티 클래스로 변환됩니다.
+
+## 🔍 상세 분석
+
+### 설정 단계
+1.  **Node.js 환경**: `npm`을 사용하기 위해 Node.js가 설치되어 있어야 합니다.
+2.  **패키지 설치**: `tailwindcss`는 핵심 엔진, `postcss`는 CSS 변환 도구, `autoprefixer`는 구형 브라우저 호환성을 위한 접두사(prefix)를 자동으로 붙여주는 도구입니다.
+3.  **설정 파일 생성**: `npx tailwindcss init`은 `tailwind.config.js`를 생성하는 기본 명령어입니다.
+4.  **CSS 지시어 포함**: `@tailwind` 지시어가 포함된 파일을 생성하여 Tailwind가 빌드할 기본 소스로 사용합니다.
+
+### 실무 포인트
+- **프레임워크 가이드 활용**: React(Vite), Next.js, SvelteKit 등 최신 프레임워크는 각각 공식적인 Tailwind CSS 통합 가이드를 제공합니다. 해당 가이드를 따르는 것이 가장 안정적입니다.
+- **`content` 경로의 중요성**: `content` 배열에 경로가 잘못 지정되면 JIT 엔진이 클래스를 감지하지 못해 스타일이 적용되지 않는 문제가 발생할 수 있습니다. 가장 흔한 실수 중 하나입니다.
+
+## ⚡ 다음 학습
+- [[Tailwind CLI]]를 사용하여 작성된 CSS를 실제 사용 가능한 CSS 파일로 빌드하는 방법을 알아봅니다.

@@ -1,0 +1,81 @@
+# 인터페이스
+
+## 🔗 연결
+- **상위:** [[ubershader-class]]
+- **관련:** [[compile]], [[setUniforms]]
+
+## 📖 개념 설명
+`Ubershader.ts` 파일은 TypeScript의 인터페이스를 사용하여 셰이더와 데이터를 주고받을 때 필요한 데이터 구조를 명확하게 정의합니다. 이는 코드의 안정성과 가독성을 높여줍니다.
+
+---
+
+### `ShaderCompileResult`
+셰이더 컴파일 결과를 나타내는 객체 구조입니다. `compile()` 메서드의 반환 값으로 사용됩니다.
+
+```typescript
+export interface ShaderCompileResult {
+  success: boolean;         // 컴파일 성공 여부
+  program?: WebGLProgram;   // 성공 시, 컴파일된 WebGL 셰이더 프로그램
+  error?: string;           // 실패 시, 원인에 대한 오류 메시지
+  compileTime: number;      // 컴파일에 소요된 시간 (ms)
+}
+```
+- **사용 이유**: 컴파일 과정은 실패할 수 있으므로, 성공 여부와 상세 정보를 함께 반환하여 호출하는 쪽에서 명확하게 후속 처리를 할 수 있도록 돕습니다.
+
+#### 실제 사용 예시
+```typescript
+// uberShader는 UberShader 클래스의 인스턴스
+const result: ShaderCompileResult = uberShader.compile();
+
+if (result.success) {
+  console.log(`셰이더 컴파일 성공! 소요 시간: ${result.compileTime}ms`);
+  // 렌더링 루프 시작 또는 다음 단계 진행
+} else {
+  console.error('셰이더 컴파일 실패:', result.error);
+  // 사용자에게 오류를 알리거나, fallback 렌더러로 전환
+}
+```
+
+---
+
+### `ShaderUniforms`
+렌더링 시 CPU에서 GPU의 셰이더로 전달해야 할 유니폼(Uniform) 변수들의 집합을 정의합니다. 유니폼은 모든 정점에 동일하게 적용되는 전역 변수와 같습니다.
+
+```typescript
+export interface ShaderUniforms {
+  u_viewMatrix: Float32Array;    // 3x3 뷰 변환 행렬 (카메라)
+  u_resolution: Float32Array;    // 캔버스 해상도 (width, height)
+  u_time: number;                // 애니메이션 시간 (초)
+  u_borderWidth: number;         // 테두리 두께 (픽셀)
+  u_selectionColor: Float32Array; // 선택 하이라이트 색상 (RGBA)
+  u_cornerRadius: number;        // 모서리 둥글기 반지름
+}
+```
+- **사용 이유**: `setUniforms()` 메서드에 전달할 데이터의 타입을 강제하여 잘못된 데이터가 전달되는 것을 방지하고, 어떤 유니폼들이 사용되는지 명확하게 문서화하는 역할을 합니다.
+
+#### 실제 사용 예시
+`setUniforms` 메서드는 `Partial<ShaderUniforms>` 타입을 매개변수로 받으므로, 변경하려는 유니폼만 포함된 객체를 전달할 수 있습니다.
+
+```typescript
+// 1. 렌더링 루프 밖에서 초기 설정
+const initialUniforms: ShaderUniforms = {
+    u_viewMatrix: new Float32Array([1, 0, 0, 0, 1, 0, 0, 0, 1]),
+    u_resolution: new Float32Array([canvas.width, canvas.height]),
+    u_time: 0,
+    u_borderWidth: 2.5,
+    u_selectionColor: new Float32Array([1, 0.8, 0, 1]), // 주황색
+    u_cornerRadius: 0.1
+};
+uberShader.setUniforms(initialUniforms);
+
+// 2. 렌더링 루프 안에서 일부만 업데이트
+function render(time) {
+    const partialUpdate: Partial<ShaderUniforms> = {
+        u_time: time / 1000, // ms를 초로 변환
+        u_viewMatrix: currentViewMatrix // 카메라 이동/줌 결과
+    };
+    uberShader.setUniforms(partialUpdate);
+    
+    // ... 렌더링 코드 ...
+}
+```

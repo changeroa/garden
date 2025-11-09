@@ -25,8 +25,8 @@ const parent = activeElement.parentElement;
 
 ## 관련 개념
 
-- [[02. Phase 2 - 계층화된 오버레이 스코프]]
-- [[웹 이벤트 (Web Events)]]
+- [[02-phase-2-layered-overlay-scope]]
+- [[web-events]]
 
 ---
-[맨 위로 돌아가기]([[00. 스코프 관리 시스템 구축 (Scope Management System)]])
+[맨 위로 돌아가기]([[00-scope-management-system]])

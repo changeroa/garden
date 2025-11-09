@@ -11,13 +11,13 @@
 
 ### 🎯 시작하기
 
-- **[00-overview.md](./00-overview.md)** - 프로젝트 전체 개요
+- **[00-overview.md](./00-overview)** - 프로젝트 전체 개요
   - 배경 및 현재 문제점
   - 목표 및 기대효과
   - 전체 로드맵
   - 핵심 메트릭
 
-- **[01-architecture.md](./01-architecture.md)** - 시스템 아키텍처
+- **[01-architecture.md](./01-architecture)** - 시스템 아키텍처
   - 전체 아키텍처 다이어그램
   - 계층 구조 설명
   - 데이터 흐름
@@ -25,25 +25,25 @@
 
 ### 🚀 Phase별 구현 가이드
 
-- **[02-phase1-performance.md](./02-phase1-performance.md)** - Phase 1: 성능 최적화
+- **[02-phase1-performance.md](./02-phase1-performance)** - Phase 1: 성능 최적화
   - IScopeDetector 인터페이스
   - DOMScopeDetector 구현
   - MutationObserver 적용
   - 성능 벤치마크
 
-- **[03-phase2-redux-integration.md](./03-phase2-redux-integration.md)** - Phase 2: Redux 통합
+- **[03-phase2-redux-integration.md](./03-phase2-redux-integration)** - Phase 2: Redux 통합
   - scopeSlice 설계
   - Selectors 구현
   - 양방향 동기화
   - Redux DevTools 연동
 
-- **[04-phase3-react-hooks.md](./04-phase3-react-hooks.md)** - Phase 3: React Hooks
+- **[04-phase3-react-hooks.md](./04-phase3-react-hooks)** - Phase 3: React Hooks
   - 기본 Hooks (useActiveScopes 등)
   - 고급 Hooks (useScopeTransition 등)
   - ScopeProvider 컴포넌트
   - 실제 사용 예시
 
-- **[05-phase4-advanced-features.md](./05-phase4-advanced-features.md)** - Phase 4: 고급 기능
+- **[05-phase4-advanced-features.md](./05-phase4-advanced-features)** - Phase 4: 고급 기능
   - 동적 스코프 시스템
   - 스코프 분석 대시보드
   - AI 통합
@@ -51,7 +51,7 @@
 
 ### 🧪 테스트 및 품질
 
-- **[06-testing-strategy.md](./06-testing-strategy.md)** - 테스트 전략
+- **[06-testing-strategy.md](./06-testing-strategy)** - 테스트 전략
   - 단위 테스트
   - 통합 테스트
   - E2E 테스트
@@ -59,13 +59,13 @@
 
 ### 🔧 실무 적용
 
-- **[07-migration-guide.md](./07-migration-guide.md)** - 마이그레이션 가이드
+- **[07-migration-guide.md](./07-migration-guide)** - 마이그레이션 가이드
   - 단계별 마이그레이션
   - Breaking Changes
   - 호환성 레이어
   - 롤백 전략
 
-- **[08-api-reference.md](./08-api-reference.md)** - API 레퍼런스
+- **[08-api-reference.md](./08-api-reference)** - API 레퍼런스
   - Interfaces 완전 문서화
   - Classes 상세 설명
   - React Hooks API
@@ -74,13 +74,13 @@
 
 ### 📊 부가 자료
 
-- **[09-troubleshooting.md](./09-troubleshooting.md)** - 트러블슈팅
+- **[09-troubleshooting.md](./09-troubleshooting)** - 트러블슈팅
   - 일반적인 문제
   - 성능 이슈
   - 통합 문제
   - FAQ
 
-- **[10-performance-benchmarks.md](./10-performance-benchmarks.md)** - 성능 벤치마크
+- **[10-performance-benchmarks.md](./10-performance-benchmarks)** - 성능 벤치마크
   - 벤치마크 방법론
   - 측정 결과
   - 비교 분석
@@ -88,9 +88,9 @@
 
 ### 💡 예제 코드
 
-- **[examples/basic-usage.md](./examples/basic-usage.md)** - 기본 사용법
-- **[examples/advanced-patterns.md](./examples/advanced-patterns.md)** - 고급 패턴
-- **[examples/integration-examples.md](./examples/integration-examples.md)** - 통합 예시
+- **[examples/basic-usage.md](./examples/basic-usage)** - 기본 사용법
+- **[examples/advanced-patterns.md](./examples/advanced-patterns)** - 고급 패턴
+- **[examples/integration-examples.md](./examples/integration-examples)** - 통합 예시
 
 ---
 
@@ -272,8 +272,8 @@ After:
 ## 🔗 관련 리소스
 
 ### 내부 문서
-- [CLAUDE.md](../../CLAUDE.md) - 프로젝트 전체 가이드
-- [SCOPE_MANAGEMENT_ANALYSIS.md](../UX/SCOPE_MANAGEMENT_ANALYSIS.md) - 현재 시스템 분석
+- [CLAUDE.md](../../CLAUDE) - 프로젝트 전체 가이드
+- [SCOPE_MANAGEMENT_ANALYSIS.md](../UX/SCOPE_MANAGEMENT_ANALYSIS) - 현재 시스템 분석
 
 ### 외부 참고
 - [MutationObserver MDN](https://developer.mozilla.org/en-US/docs/Web/API/MutationObserver)
@@ -336,4 +336,4 @@ A: DOM 쿼리 99% 감소, 응답 지연 84% 감소 예상입니다.
 
 ---
 
-**시작**: [00-overview.md](./00-overview.md) - 프로젝트 개요부터 시작하세요!
+**시작**: [00-overview.md](./00-overview) - 프로젝트 개요부터 시작하세요!

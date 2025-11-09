@@ -611,6 +611,6 @@ function ScopeAnalyticsTracker() {
 ---
 
 **관련 문서**:
-- [basic-usage.md](./basic-usage.md) - 기본 사용법
-- [integration-examples.md](./integration-examples.md) - 통합 예시
-- [04-phase3-react-hooks.md](../04-phase3-react-hooks.md) - React Hooks
+- [basic-usage.md](./basic-usage) - 기본 사용법
+- [integration-examples.md](./integration-examples) - 통합 예시
+- [04-phase3-react-hooks.md](../04-phase3-react-hooks) - React Hooks

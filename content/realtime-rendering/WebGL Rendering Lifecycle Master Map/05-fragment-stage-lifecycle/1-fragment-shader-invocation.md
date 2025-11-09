@@ -1,0 +1,38 @@
+
+# 1. Fragment Shader 호출 시점
+
+> **핵심: 픽셀마다 실행되는 로직. 셰이더 정밀도, fwidth, SDF, 감마 모두 여기에 연결된다.**
+
+Fragment Shader(또는 Pixel Shader)는 렌더링 파이프라인에서 각 픽셀의 최종 색상을 결정하는 프로그래밍 가능한 마지막 단계입니다. 성능에 가장 큰 영향을 미치는 부분 중 하나입니다.
+
+---
+
+### 1. 호출 시점
+
+-   [[04-rasterization-lifecycle/1. Triangle Coverage Calculation|래스터화]] 단계에서 생성된 **모든 프래그먼트(Fragment)에 대해 한 번씩** 실행됩니다.
+-   프래그먼트는 [[04-rasterization-lifecycle/2. Depth & Face Culling|깊이 테스트]]나 기타 테스트를 통과한 "픽셀 후보"입니다.
+-   예를 들어, 800x600 해상도의 화면을 가득 채우는 삼각형을 그린다면, Fragment Shader는 약 480,000번 (병렬적으로) 실행됩니다.
+
+### 2. 입력: Varying 값의 보간 (Interpolation)
+
+Fragment Shader는 `in` 키워드로 선언된 varying 변수를 입력으로 받습니다. 이 값들은 [[03-vertex-stage-lifecycle/4. Vertex Shader의 생명주기|Vertex Shader]]에서 출력된 값이 그대로 오는 것이 아니라, **보간(Interpolated)**된 값입니다.
+
+-   **보간 원리**: 래스터라이저는 각 프래그먼트의 위치에 따라, 삼각형을 구성하는 세 정점의 varying 출력 값을 거리 기반으로 가중 평균하여 새로운 값을 계산합니다.
+-   **`in vec2 v_texcoord;`**: 텍스처 좌표가 보간되어, 각 픽셀이 텍스처의 어느 부분을 샘플링해야 할지 알려줍니다.
+-   **`in vec3 v_normal;`**: 법선 벡터가 보간되어, 부드러운 조명 효과(Phong Shading)를 가능하게 합니다.
+-   **`in vec4 v_color;`**: 정점 색상이 보간되어, 그라데이션 효과(Gouraud Shading)를 만듭니다.
+
+-   **`gl_FragCoord`**: Fragment Shader에서 사용할 수 있는 내장 입력 변수로, 현재 처리 중인 프래그먼트의 화면 좌표 `(x, y, z, 1/w)` 정보를 담고 있습니다.
+
+### 3. 출력: 최종 픽셀 색상
+
+-   Fragment Shader의 최종 목표는 해당 프래그먼트의 색상을 결정하여 출력하는 것입니다.
+-   `out vec4 fragColor;` 와 같이 `out` 변수를 선언하고, 여기에 최종 RGBA 색상 값을 할당해야 합니다.
+    ```glsl
+    // 텍스처에서 색상을 샘플링
+    vec4 textureColor = texture(u_sampler, v_texcoord);
+    
+    // 최종 출력 색상 지정
+    fragColor = textureColor;
+    ```
+-   이 출력 값은 다음 단계인 [[06-blending-lifecycle/1. Blend Equation & Factors|Blending Stage]]로 전달되어 프레임버퍼의 기존 색상과 혼합됩니다.

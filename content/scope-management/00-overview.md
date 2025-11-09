@@ -478,9 +478,9 @@ npm run benchmark:scope
 ## 참고 자료
 
 ### 관련 문서
-- [CLAUDE.md](../../CLAUDE.md) - 프로젝트 전체 가이드
-- [SCOPE_MANAGEMENT_ANALYSIS.md](../UX/SCOPE_MANAGEMENT_ANALYSIS.md) - 현재 시스템 분석
-- [GLOBAL_SCOPE_MANAGER_QUESTIONS.md](../UX/GLOBAL_SCOPE_MANAGER_QUESTIONS.md) - 설계 질문서
+- [CLAUDE.md](../../CLAUDE) - 프로젝트 전체 가이드
+- [SCOPE_MANAGEMENT_ANALYSIS.md](../UX/SCOPE_MANAGEMENT_ANALYSIS) - 현재 시스템 분석
+- [GLOBAL_SCOPE_MANAGER_QUESTIONS.md](../UX/GLOBAL_SCOPE_MANAGER_QUESTIONS) - 설계 질문서
 
 ### 기술 스택
 - React 19.1.0
@@ -511,4 +511,4 @@ npm run benchmark:scope
 
 ---
 
-**다음 문서**: [01-architecture.md](./01-architecture.md) - 시스템 아키텍처 상세 설계
+**다음 문서**: [01-architecture.md](./01-architecture) - 시스템 아키텍처 상세 설계

@@ -658,6 +658,6 @@ GitHub Issues에 다음 정보와 함께 보고해주세요:
 ---
 
 **관련 문서**:
-- [06-testing-strategy.md](./06-testing-strategy.md) - 테스트 전략
-- [07-migration-guide.md](./07-migration-guide.md) - 마이그레이션 가이드
-- [08-api-reference.md](./08-api-reference.md) - API 문서
+- [06-testing-strategy.md](./06-testing-strategy) - 테스트 전략
+- [07-migration-guide.md](./07-migration-guide) - 마이그레이션 가이드
+- [08-api-reference.md](./08-api-reference) - API 문서

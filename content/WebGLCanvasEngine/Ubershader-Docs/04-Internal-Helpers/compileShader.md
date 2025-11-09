@@ -2,7 +2,7 @@
 
 ## 🔗 연결
 - **상위:** [[compile]]
-- **관련:** [[UberShader 클래스]]
+- **관련:** [[ubershader-class]]
 
 ## 📖 설명
 `compileShader()`는 `UberShader` 클래스 내부에서 사용되는 비공개(private) 헬퍼 메서드입니다. `compile()` 메서드에 의해 호출되며, 단일 셰이더(버텍스 또는 프래그먼트)를 컴파일하는 역할을 담당합니다.

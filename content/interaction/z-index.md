@@ -30,7 +30,7 @@ const zIndex = parseInt(style.zIndex, 10) || 0;
 
 ## 관련 개념
 
-- [[02. Phase 2 - 계층화된 오버레이 스코프]]
+- [[02-phase-2-layered-overlay-scope]]
 
 ---
-[맨 위로 돌아가기]([[00. 스코프 관리 시스템 구축 (Scope Management System)]])
+[맨 위로 돌아가기]([[00-scope-management-system]])

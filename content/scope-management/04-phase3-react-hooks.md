@@ -920,6 +920,6 @@ Phase 3 완료 후 **Phase 4: Advanced Features**로 진행:
 ---
 
 **관련 문서**:
-- [03-phase2-redux-integration.md](./03-phase2-redux-integration.md) - 이전 단계
-- [05-phase4-advanced-features.md](./05-phase4-advanced-features.md) - 다음 단계
-- [08-api-reference.md](./08-api-reference.md) - API 문서
+- [03-phase2-redux-integration.md](./03-phase2-redux-integration) - 이전 단계
+- [05-phase4-advanced-features.md](./05-phase4-advanced-features) - 다음 단계
+- [08-api-reference.md](./08-api-reference) - API 문서

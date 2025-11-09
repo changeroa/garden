@@ -8,7 +8,7 @@ LLM 컨텍스트 최적화와 메모리 시스템 설계에 관한 문서입니�
 
 ## 📚 핵심 문서
 
-### [Memory Systems Parallel Translation](memory_systems_parallel_translation.md)
+### [Memory Systems Parallel Translation](memory_systems_parallel_translation)
 
 병렬 번역 시스템에서의 메모리 관리와 컨텍스트 최적화 전략을 다룹니다.
 
