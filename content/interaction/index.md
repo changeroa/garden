@@ -9,23 +9,23 @@ title: Interaction & Scope Management
 ## 📖 주요 문서
 
 ### 핵심 시스템
-- [🏗️ 스코프 관리 시스템 구축](00.-스코프-관리-시스템-구축-(Scope-Management-System).md)
+- [🏗️ 스코프 관리 시스템 구축](00-scope-management-system.md)
 
 ### Phase별 구현
-1. [IME 입력 보호 시스템](01.-Phase-1---IME-입력-보호-시스템)
-2. [계층화된 오버레이 스코프](02.-Phase-2---계층화된-오버레이-스코프)
-3. [멀티 포인터 적응 시스템](03.-Phase-3---멀티-포인터-적응-시스템)
-4. [성능 최적화](04.-Phase-4---성능-최적화)
-5. [다중 인스턴스 라우팅](05.-Phase-5---다중-인스턴스-라우팅)
-6. [통합 이벤트 처리 파이프라인](06.-Phase-6---통합-이벤트-처리-파이프라인)
+1. [IME 입력 보호 시스템](01-phase-1-ime-input-protection.md)
+2. [계층화된 오버레이 스코프](02-phase-2-layered-overlay-scope.md)
+3. [멀티 포인터 적응 시스템](03-phase-3-multi-pointer-adaptation.md)
+4. [성능 최적화](04-phase-4-performance-optimization.md)
+5. [다중 인스턴스 라우팅](05-phase-5-multi-instance-routing.md)
+6. [통합 이벤트 처리 파이프라인](06-phase-6-integrated-event-pipeline.md)
 
 ### 참고 자료
-- [ARIA (Accessible Rich Internet Applications)](ARIA-(Accessible-Rich-Internet-Applications).md)
-- [DOM (Document Object Model)](DOM-(Document-Object-Model).md)
-- [웹 이벤트 (Web Events)](웹-이벤트-(Web-Events).md)
-- [이벤트 버블링과 캡처링](이벤트-버블링과-캡처링-(Event-Bubbling-and-Capturing).md)
-- [z-index](z-index)
-- [성능 최적화 기법](성능-최적화-기법-(Performance-Optimization-Techniques).md)
+- [ARIA (Accessible Rich Internet Applications)](ARIA%20(Accessible%20Rich%20Internet%20Applications).md)
+- [DOM (Document Object Model)](DOM%20(Document%20Object%20Model).md)
+- [웹 이벤트 (Web Events)](web-events.md)
+- [이벤트 버블링과 캡처링](event-bubbling-and-capturing.md)
+- [z-index](z-index.md)
+- [성능 최적화 기법](performance-optimization-techniques.md)
 
 ## 🎓 학습 경로
 
