@@ -1,17 +1,15 @@
 {
-  "name": "@jackyzha0/quartz",
-  "description": "🌱 publish your digital garden and notes as a website",
+  "name": "digital-garden",
+  "description": "My personal digital garden and tech knowledge base",
   "private": true,
-  "version": "4.5.2",
+  "version": "0.0.1",
   "type": "module",
-  "author": "jackyzha0 <j.zhao2k19@gmail.com>",
+  "author": "Changeroa",
   "license": "MIT",
-  "homepage": "https://quartz.jzhao.xyz",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/jackyzha0/quartz.git"
-  },
+  "homepage": "https://changeroa.github.io",
   "scripts": {
+    "dev": "npx quartz build --serve",
+    "build": "npx quartz build",
     "quartz": "./quartz/bootstrap-cli.mjs",
     "docs": "npx quartz build --serve -d docs",
     "check": "tsc --noEmit && npx prettier . --check",

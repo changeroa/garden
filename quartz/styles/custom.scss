@@ -1,3 +1,71 @@
 @use "./base.scss";
+@use "./variables.scss" as *;
 
-// put your custom CSS here!
+// Zen Mode Layout
+// Center the main content and constrain width
+.page {
+    margin: 0 auto;
+    padding: 0 2rem;
+
+    // Mobile/Tablet: Constrain width for Zen Mode
+    @media (max-width: 1200px) {
+        max-width: 800px;
+    }
+
+    // Desktop: Allow grid to handle width, but ensure content isn't too wide
+    @media (min-width: 1200px) {
+        max-width: 100%; // Let the grid column define the width
+    }
+}
+
+// Header Styling
+.page-header {
+    margin-top: 2rem;
+    margin-bottom: 4rem;
+    align-items: center;
+}
+
+// Typography Overrides for Minimalism
+h1 {
+    font-weight: 600;
+    margin-top: 0;
+    // Remove gradient if present in base, ensure solid color
+    background: none;
+    -webkit-text-fill-color: initial;
+    color: var(--dark);
+}
+
+// Graph View on Homepage
+.graph {
+    border-radius: 8px;
+    border: 1px solid var(--lightgray);
+}
+
+// Search Button Minimalist
+.search-button {
+    background: transparent;
+    padding: 0.5rem;
+    border-radius: 4px;
+
+    &:hover {
+        background: var(--lightgray);
+    }
+
+    p {
+        display: none; // Hide "Search" text, show icon only
+    }
+
+    svg {
+        width: 20px;
+        height: 20px;
+        stroke: var(--darkgray);
+    }
+}
+
+// Dark Mode Specifics (if needed beyond config)
+:root[saved-theme="dark"] {
+    --light: #0a0a0a;
+    --lightgray: #1a1a1a;
+    --dark: #e5e5e5;
+    --secondary: #ffffff;
+}
