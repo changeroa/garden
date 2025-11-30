@@ -7,6 +7,7 @@ export const sharedPageComponents: SharedLayout = {
   header: [
     Component.PageTitle(),
     Component.Spacer(),
+    Component.SocialLinks(),
     Component.Search(),
   ],
   afterBody: [],

@@ -1,9 +1,9 @@
 // @ts-ignore
-import readerModeScript from "./scripts/readermode.inline"
-import styles from "./styles/readermode.scss"
-import { QuartzComponent, QuartzComponentConstructor, QuartzComponentProps } from "./types"
-import { i18n } from "../i18n"
-import { classNames } from "../util/lang"
+import readerModeScript from "../scripts/readermode.inline"
+import styles from "../styles/readermode.scss"
+import { QuartzComponent, QuartzComponentConstructor, QuartzComponentProps } from "../types"
+import { i18n } from "../../i18n"
+import { classNames } from "../../util/lang"
 
 const ReaderMode: QuartzComponent = ({ displayClass, cfg }: QuartzComponentProps) => {
   return (

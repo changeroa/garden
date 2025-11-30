@@ -1,5 +1,5 @@
 import { GlobalConfiguration } from "../cfg"
-import { ValidLocale } from "../i18n"
+import { ValidLocale } from "../../i18n"
 import { QuartzPluginData } from "../plugins/vfile"
 
 interface Props {

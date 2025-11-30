@@ -1,7 +1,7 @@
 import { render } from "preact-render-to-string"
-import { QuartzComponent, QuartzComponentProps } from "./types"
-import HeaderConstructor from "./Header"
-import BodyConstructor from "./Body"
+import { QuartzComponent, QuartzComponentProps } from "../types"
+import HeaderConstructor from "./core/Header"
+import BodyConstructor from "./core/Body"
 import { JSResourceToScriptElement, StaticResources } from "../util/resources"
 import { FullSlug, RelativeURL, joinSegments, normalizeHastElement } from "../util/path"
 import { clone } from "../util/clone"
@@ -10,6 +10,7 @@ import { Root, Element, ElementContent } from "hast"
 import { GlobalConfiguration } from "../cfg"
 import { i18n } from "../i18n"
 import { styleText } from "util"
+import { checkCancel } from "../processors/cancellation"
 
 interface RenderComponents {
   head: QuartzComponent
@@ -82,7 +83,7 @@ function renderTranscludes(
           console.warn(
             styleText(
               "yellow",
-              `Warning: Skipping circular transclusion: ${slug} -> ${transcludeTarget}`,
+              `Warning: Skipping circular transclusion: ${slug} -> ${transcludeTarget} `,
             ),
           )
           node.children = [
@@ -93,7 +94,7 @@ function renderTranscludes(
               children: [
                 {
                   type: "text",
-                  value: `Circular transclusion detected: ${transcludeTarget}`,
+                  value: `Circular transclusion detected: ${transcludeTarget} `,
                 },
               ],
             },
