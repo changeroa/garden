@@ -8,8 +8,9 @@
   "license": "MIT",
   "homepage": "https://changeroa.github.io",
   "scripts": {
-    "dev": "npx quartz build --serve",
-    "build": "npx quartz build",
+    "sync": "./scripts/sync.sh",
+    "dev": "npm run sync && npx quartz build --serve",
+    "build": "npm run sync && npx quartz build",
     "quartz": "./quartz/bootstrap-cli.mjs",
     "docs": "npx quartz build --serve -d docs",
     "check": "tsc --noEmit && npx prettier . --check",

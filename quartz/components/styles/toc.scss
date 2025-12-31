@@ -6,8 +6,27 @@
   overflow-y: hidden;
   min-height: 1.4rem;
   flex: 0 0.5 auto;
+  padding: 1rem;
+  background: var(--card-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-md);
+  transition: all 0.3s ease;
+
+  &:hover {
+    border-color: var(--secondary);
+    box-shadow: var(--shadow-sm);
+  }
+
   &:has(button.toc-header.collapsed) {
     flex: 0 1 1.4rem;
+    padding: 0.5rem 1rem;
+    background: transparent;
+    border: 1px solid transparent;
+
+    &:hover {
+      background: var(--card-bg);
+      border-color: var(--glass-border);
+    }
   }
 }
 
@@ -20,17 +39,30 @@ button.toc-header {
   color: var(--dark);
   display: flex;
   align-items: center;
+  justify-content: space-between;
+  width: 100%;
 
   & h3 {
-    font-size: 1rem;
+    font-size: 0.85rem;
+    font-weight: 600;
     display: inline-block;
     margin: 0;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--gray);
   }
 
   & .fold {
     margin-left: 0.5rem;
     transition: transform 0.3s ease;
-    opacity: 0.8;
+    opacity: 0.5;
+    width: 16px;
+    height: 16px;
+  }
+
+  &:hover .fold {
+    opacity: 1;
+    color: var(--secondary);
   }
 
   &.collapsed .fold {
@@ -41,26 +73,56 @@ button.toc-header {
 ul.toc-content.overflow {
   list-style: none;
   position: relative;
-  margin: 0.5rem 0;
+  margin: 0.5rem 0 0 0;
   padding: 0;
   max-height: calc(100% - 2rem);
   overscroll-behavior: contain;
   list-style: none;
 
+  // Track line for depth
+  &::before {
+    content: "";
+    position: absolute;
+    left: 4px;
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    background: var(--glass-border);
+  }
+
+  & > li {
+    margin: 0.2rem 0;
+  }
+
   & > li > a {
     color: var(--dark);
-    opacity: 0.35;
-    transition:
-      0.5s ease opacity,
-      0.3s ease color;
+    opacity: 0.5;
+    transition: all 0.2s ease;
+    font-size: 0.9rem;
+    display: block;
+    padding: 0.2rem 0 0.2rem 0.5rem;
+    border-left: 2px solid transparent;
+    margin-left: 3px; // Align with track line
+    text-decoration: none;
+
+    &:hover {
+      opacity: 0.9;
+      color: var(--secondary);
+      transform: translateX(2px);
+    }
+
     &.in-view {
-      opacity: 0.75;
+      opacity: 1;
+      color: var(--secondary);
+      border-left-color: var(--secondary);
+      font-weight: 500;
+      background: linear-gradient(90deg, rgba(59, 130, 246, 0.05) 0%, transparent 100%);
     }
   }
 
   @for $i from 0 through 6 {
     & .depth-#{$i} {
-      padding-left: calc(1rem * #{$i});
+      padding-left: calc(0.8rem * #{$i});
     }
   }
 }

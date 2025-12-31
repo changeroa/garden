@@ -1,71 +1,550 @@
 @use "./base.scss";
 @use "./variables.scss" as *;
 
-// Zen Mode Layout
-// Center the main content and constrain width
+// =========================================
+// 🎨 LINEAR / STRIPE DESIGN SYSTEM
+// =========================================
+
+:root {
+  --page-width: 1600px;
+  --header-height: 64px;
+
+  // Gradients
+  --gradient-primary: linear-gradient(135deg, #7c3aed 0%, #3b82f6 50%, #06b6d4 100%);
+  --gradient-subtle: linear-gradient(
+    180deg,
+    rgba(59, 130, 246, 0.08) 0%,
+    rgba(59, 130, 246, 0) 100%
+  );
+  --gradient-glow: radial-gradient(
+    circle at 50% -20%,
+    rgba(124, 58, 237, 0.15),
+    rgba(124, 58, 237, 0) 50%
+  );
+
+  // Shadows & Effects
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --shadow-glow: 0 0 20px rgba(124, 58, 237, 0.3);
+
+  // Borders & Radius
+  --border-subtle: 1px solid var(--lightgray);
+  --radius-sm: 6px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+}
+
+:root[saved-theme="dark"] {
+  --bg-gradient: radial-gradient(circle at 50% 0%, #1a1b26 0%, #0a0a0b 100%);
+  --glass-bg: rgba(10, 10, 11, 0.85); // Slightly more opaque for better contrast
+  --glass-border: rgba(255, 255, 255, 0.1);
+  --card-bg: rgba(255, 255, 255, 0.04);
+  --text-main: #e2e8f0;
+  --text-muted: #94a3b8;
+  --border-color: rgba(255, 255, 255, 0.1);
+}
+
+:root[saved-theme="light"] {
+  --bg-gradient: radial-gradient(circle at 50% 0%, #f0f4ff 0%, #fafafa 100%);
+  --glass-bg: rgba(255, 255, 255, 0.9);
+  --glass-border: rgba(0, 0, 0, 0.06);
+  --card-bg: #ffffff;
+  --text-main: #1e293b;
+  --text-muted: #64748b;
+  --border-color: rgba(0, 0, 0, 0.08);
+}
+
+// =========================================
+// 🏗️ LAYOUT OVERRIDES
+// =========================================
+
+body {
+  background-color: var(--light);
+  background-image: var(--bg-gradient);
+  background-attachment: fixed;
+  min-height: 100vh;
+  letter-spacing: -0.01em;
+  color: var(--text-main);
+}
+
 .page {
-    margin: 0 auto;
-    padding: 0 2rem;
+  max-width: var(--page-width);
+  padding: 0 2rem;
 
-    // Mobile/Tablet: Constrain width for Zen Mode
-    @media (max-width: 1200px) {
-        max-width: 800px;
-    }
-
-    // Desktop: Allow grid to handle width, but ensure content isn't too wide
-    @media (min-width: 1200px) {
-        max-width: 100%; // Let the grid column define the width
-    }
+  // Grain texture
+  &::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.03'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 9999;
+    mix-blend-mode: overlay;
+  }
 }
 
-// Header Styling
+// Sticky Glass Header
 .page-header {
-    margin-top: 2rem;
-    margin-bottom: 4rem;
-    align-items: center;
+  position: sticky;
+  top: 1rem;
+  z-index: 100;
+  background: var(--glass-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-lg);
+  margin-top: 1rem;
+  margin-bottom: 3rem;
+  padding: 0.75rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: var(--shadow-sm);
+  transition: all 0.3s ease;
+
+  &:hover {
+    box-shadow: var(--shadow-md);
+    border-color: var(--secondary);
+  }
 }
 
-// Typography Overrides for Minimalism
+// Floating Sidebars
+.sidebar {
+  padding-top: 6rem !important;
+
+  &.left {
+    .explorer {
+      mask-image: linear-gradient(to bottom, black 90%, transparent 100%);
+    }
+  }
+}
+
+// =========================================
+// ✍️ TYPOGRAPHY
+// =========================================
+
 h1 {
-    font-weight: 600;
-    margin-top: 0;
-    // Remove gradient if present in base, ensure solid color
-    background: none;
-    -webkit-text-fill-color: initial;
-    color: var(--dark);
+  font-weight: 700;
+  font-size: clamp(2rem, 5vw, 2.5rem); // Responsive scaling
+  letter-spacing: -0.03em;
+  margin-bottom: 1.5rem;
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  width: fit-content;
+  line-height: 1.2;
 }
 
-// Graph View on Homepage
-.graph {
-    border-radius: 8px;
-    border: 1px solid var(--lightgray);
+h2 {
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  margin-top: 3rem;
+  border-bottom: 1px solid var(--glass-border);
+  padding-bottom: 0.5rem;
 }
 
-// Search Button Minimalist
-.search-button {
-    background: transparent;
-    padding: 0.5rem;
-    border-radius: 4px;
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+// Links
+a {
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 4px;
+
+  &:not(.internal):not(.search-button):not(.tag-link):not(h1 > a):not(h2 > a):not(h3 > a) {
+    text-decoration: none;
+    background-image: linear-gradient(var(--secondary), var(--secondary));
+    background-size: 0% 2px;
+    background-repeat: no-repeat;
+    background-position: left bottom;
+    padding-bottom: 2px;
 
     &:hover {
-        background: var(--lightgray);
+      background-size: 100% 2px;
+      color: var(--tertiary);
+    }
+  }
+
+  &.internal {
+    background: rgba(124, 58, 237, 0.05);
+    border: 1px solid transparent;
+    border-bottom: 1px solid rgba(124, 58, 237, 0.2);
+    text-decoration: none;
+    padding: 0 4px;
+    border-radius: 4px;
+    margin: 0 1px;
+
+    &:hover {
+      background: rgba(124, 58, 237, 0.15);
+      color: var(--tertiary);
+      transform: translateY(-1px);
+      box-shadow: 0 2px 4px rgba(124, 58, 237, 0.1);
+      border-color: rgba(124, 58, 237, 0.3);
     }
 
-    p {
-        display: none; // Hide "Search" text, show icon only
+    &:active {
+      transform: scale(0.96);
     }
-
-    svg {
-        width: 20px;
-        height: 20px;
-        stroke: var(--darkgray);
-    }
+  }
 }
 
-// Dark Mode Specifics (if needed beyond config)
-:root[saved-theme="dark"] {
-    --light: #0a0a0a;
-    --lightgray: #1a1a1a;
-    --dark: #e5e5e5;
-    --secondary: #ffffff;
+// =========================================
+// 🧩 COMPONENTS
+// =========================================
+
+// Cards
+.graph,
+.toc,
+.backlinks,
+.recent-notes,
+.callout {
+  background: var(--card-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-md);
+  padding: 1.5rem;
+  transition:
+    transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+    border-color 0.3s ease;
+  will-change: transform, box-shadow;
+
+  &:hover {
+    box-shadow: var(--shadow-lg);
+    border-color: var(--secondary);
+    transform: translateY(-3px);
+  }
+}
+
+// Buttons
+button {
+  transition:
+    transform 0.1s ease,
+    background-color 0.2s ease,
+    color 0.2s ease;
+  cursor: pointer;
+
+  &:active {
+    transform: scale(0.96);
+  }
+}
+
+.darkmode,
+.readermode,
+.global-graph-icon {
+  background: transparent;
+  border: none;
+  border-radius: var(--radius-sm);
+  padding: 0.4rem;
+  color: var(--text-muted);
+
+  &:hover {
+    background: var(--lightgray);
+    color: var(--text-main);
+  }
+}
+
+// Search
+.search-button {
+  background: var(--lightgray);
+  border: 1px solid transparent;
+  border-radius: var(--radius-md);
+  padding: 0.5rem 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+
+  &:hover {
+    background: var(--highlight);
+    border-color: var(--secondary);
+    color: var(--text-main);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+  }
+
+  &:active {
+    transform: scale(0.96);
+  }
+
+  kbd {
+    background: var(--card-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: 4px;
+    padding: 2px 6px;
+    font-size: 0.7em;
+    font-family: var(--codeFont);
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
+  }
+}
+
+// Callouts
+.callout {
+  border-radius: var(--radius-md);
+  border: 1px solid var(--glass-border);
+  background: var(--card-bg);
+  box-shadow: var(--shadow-sm);
+
+  &[data-callout="note"] {
+    border-left-color: var(--secondary);
+    background: linear-gradient(to right, rgba(94, 106, 210, 0.05), transparent);
+  }
+}
+
+// Code Blocks
+pre {
+  border: 1px solid var(--glass-border) !important;
+  background: #0d0d0e !important;
+  border-radius: var(--radius-md) !important;
+  box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.5);
+  overflow-x: auto; // Ensure horizontal scroll
+
+  code {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 0.85em;
+  }
+}
+
+// Blockquotes
+blockquote {
+  border-left: 3px solid var(--secondary);
+  background: linear-gradient(90deg, rgba(94, 106, 210, 0.05) 0%, transparent 100%);
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+  padding: 1rem 1.5rem;
+  margin: 1.5rem 0;
+  font-style: italic;
+  color: var(--text-muted);
+}
+
+// Tables
+table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  display: block; // Allow scrolling on mobile if needed
+  overflow-x: auto;
+  white-space: nowrap; // Prevent wrapping in tight tables
+
+  th {
+    background: var(--card-bg);
+    border-bottom: 1px solid var(--glass-border);
+    padding: 1rem;
+    font-weight: 600;
+  }
+
+  td {
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid var(--glass-border);
+  }
+
+  tr:last-child td {
+    border-bottom: none;
+  }
+
+  tr:hover td {
+    background: var(--highlight);
+  }
+}
+
+// Animations
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(12px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+article > * {
+  animation: fadeIn 0.6s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+  opacity: 0;
+}
+
+@for $i from 1 through 15 {
+  article > *:nth-child(#{$i}) {
+    animation-delay: #{$i * 0.05}s;
+  }
+}
+
+// =========================================
+// 📱 MOBILE & TABLET RESPONSIVE
+// =========================================
+
+// Tablet (800px - 1200px)
+@media (min-width: 800px) and (max-width: 1200px) {
+  .page {
+    padding: 0 1.5rem;
+  }
+
+  .sidebar {
+    display: none; // Often cleaner to hide sidebars on tablet
+  }
+
+  // Adjust grid if needed via base.scss, but here visual tweaks
+  .page-header {
+    margin-bottom: 2rem;
+  }
+}
+
+// Mobile (< 800px)
+@media (max-width: 800px) {
+  .page {
+    padding: 0 1rem;
+  }
+
+  // Reset Header
+  .page-header {
+    margin-top: 0;
+    margin-bottom: 1.5rem;
+    border-radius: 0;
+    border-left: none;
+    border-right: none;
+    border-top: none;
+    position: sticky;
+    top: 0;
+    background: var(--glass-bg); // Consistent glass effect
+    backdrop-filter: blur(16px); // Stronger blur for mobile
+    width: 100vw;
+    margin-left: -1rem; // Counteract page padding
+    padding: 0.75rem 1rem;
+    justify-content: space-between;
+  }
+
+  // Sidebar hidden/drawer style
+  .sidebar {
+    padding-top: 1rem !important;
+    &.left,
+    &.right {
+      display: none; // Hide by default on mobile for focus
+    }
+  }
+
+  // Typography
+  h1 {
+    font-size: 2rem;
+    line-height: 1.1;
+  }
+
+  // Hide complex visualizations
+  .graph {
+    display: none;
+  }
+
+  // TOC Collapsible (simplification: hide or make block)
+  .toc {
+    padding: 1rem;
+    margin-bottom: 1rem;
+
+    // If you want it visible but smaller
+    max-height: 300px;
+    overflow-y: auto;
+  }
+
+  // Ensure code blocks don't break layout
+  pre {
+    border-radius: var(--radius-sm) !important;
+    font-size: 0.8rem;
+    margin: 1rem -1rem; // Full bleed on very small screens
+    width: calc(100% + 2rem);
+    border-left: none !important;
+    border-right: none !important;
+  }
+
+  // Tables
+  table {
+    display: block;
+    overflow-x: auto;
+    width: 100%;
+    margin: 1rem 0;
+    font-size: 0.9rem;
+  }
+
+  // Touch Targets
+  button,
+  a.internal,
+  .search-button {
+    min-height: 44px; // WCAG Touch Target
+    display: flex;
+    align-items: center;
+  }
+}
+
+// =========================================
+// 🖱️ INTERACTION & SCROLL
+// =========================================
+
+// Custom Scrollbar
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(150, 150, 150, 0.3);
+  border-radius: 5px;
+  border: 2px solid transparent;
+  background-clip: content-box;
+  transition: background-color 0.2s ease;
+
+  &:hover {
+    background-color: rgba(150, 150, 150, 0.6);
+  }
+}
+
+// Explorer
+.explorer {
+  ul li a {
+    transition: all 0.2s ease;
+    border-left: 2px solid transparent;
+    padding-left: 0.5rem;
+    display: block;
+
+    &:hover {
+      padding-left: 0.75rem;
+      border-left-color: var(--secondary);
+      color: var(--secondary);
+      background: linear-gradient(90deg, rgba(124, 58, 237, 0.05), transparent);
+    }
+  }
+}
+
+// Global Theme Transition
+* {
+  transition:
+    background-color 0.3s ease,
+    color 0.2s ease,
+    border-color 0.3s ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  ::before,
+  ::after {
+    animation-duration: 0.01s !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01s !important;
+    scroll-behavior: auto !important;
+  }
 }

@@ -1,0 +1,13 @@
+{
+    "mcpServers": {
+      "knowledgeOS": {
+        "command": "node",
+        "args": ["/home/changeroa/obsidian/mcp-servers/knowledgeOS/dist/index.js"],
+        "env": {
+          "VAULT_PATH": "/home/changeroa/obsidian",
+          "KNOWLEDGE_DIR": "Knowledge",
+          "INBOX_DIR": "Inbox"
+        }
+      }
+    }
+  }

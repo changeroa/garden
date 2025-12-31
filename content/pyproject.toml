@@ -1,0 +1,13 @@
+[project]
+name = "obsidian-tools"
+version = "0.1.0"
+description = "Obsidian vault 관리 도구"
+requires-python = ">=3.10"
+dependencies = [
+    "cloudinary>=1.36.0",
+    "python-dotenv>=1.0.0",
+    "Pillow>=10.0.0",
+]
+
+[project.scripts]
+migrate-to-cloudinary = "scripts.migrate_to_cloudinary:main"
